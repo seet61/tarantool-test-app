@@ -20,10 +20,9 @@ public class Main {
             System.out.println("list.size(): " + list.size());
             List tuple = new ArrayList();
             /* insert */
-            /*tuple.add(list.size());
-            tuple.add("service.sap.bpmint");
-            tuple.add("BPMLOADER=etijh13yhwcpiuvly3crxiti");
-            tuple.add(".ASPXAUTH=847D03135269308F513EED90E5C1A92DCAE221BF769DD8FB37DA7500FC592EC9B5EAE9319F5DD4ED39B7BD1D652D89E95398FAE09E26");
+            /*tuple.add("service.sap.bpmint");
+            tuple.add("BPMLOADER=syongzgtrtl5sy4iiryrj2l2");
+            tuple.add(".ASPXAUTH=F0C6FABC73A8267DF4803C27729C51B03CBD8EA8C8161B534FD8201422E9C1DA8A3DAD");
             tuple.add("UserName=115, 101, 114, 118, 105, 99, 101, 46, 115, 97, 112, 46, 98, 112, 109, 105, 110, 116");
             tuple.add("");
             list = con.insert(1000, tuple);
@@ -33,8 +32,18 @@ public class Main {
             tuple = new ArrayList();
             tuple.add("service.bpmint");
             list = con.select(1000,0, tuple,0,1,0);
-            List value = (List) list.get(0);
-            System.out.println("select: " + value.get(0) + " " + value.get(1));
+            if (list.size() > 0) {
+                List value = (List) list.get(0);
+                System.out.println("select: " + value.get(0) + " " + value.get(1));
+            }
+
+            /* update */
+            List operation = new ArrayList();
+            operation.add("=");
+            operation.add(5);
+            operation.add("bpmsessionid");
+            list = con.update(1000, tuple, operation);
+            System.out.println("update: " + list);
 
             /* delete by index after search */
             /*list = con.delete(1000, tuple);

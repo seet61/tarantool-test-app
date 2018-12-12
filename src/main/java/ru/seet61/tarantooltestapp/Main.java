@@ -16,6 +16,10 @@ public class Main {
             Socket socket = new Socket();
             socket.connect(new InetSocketAddress("10.78.221.57", 3301));
             TarantoolConnection con = new TarantoolConnection("tokens_user", "tokens_pwd", socket);
+
+
+
+
             List<?> list = con.select(1000,0, Collections.emptyList(),0,1024,0);
             System.out.println("list.size(): " + list.size());
             List tuple = new ArrayList();
@@ -38,16 +42,16 @@ public class Main {
             }
 
             /* update */
-            List operation = new ArrayList();
+            /*List operation = new ArrayList();
             operation.add("=");
             operation.add(5);
             operation.add("bpmsessionid");
             list = con.update(1000, tuple, operation);
-            System.out.println("update: " + list);
+            System.out.println("update: " + list);*/
 
             /* delete by index after search */
-            /*list = con.delete(1000, tuple);
-            System.out.println("delete: " + list);*/
+            list = con.delete(1000, tuple);
+            System.out.println("delete: " + list);
 
 
             con.close();
